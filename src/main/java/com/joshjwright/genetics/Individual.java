@@ -4,7 +4,11 @@ import lombok.Getter;
 
 import java.util.Random;
 
-public abstract class Individual<S, T> {
+public abstract class Individual<S, T extends Comparable> {
+
+    /** Short hand for an individual initilaised with a random state */
+    @Getter
+    private static Individual random;
 
     /**
      * The objects genetic state
@@ -16,6 +20,7 @@ public abstract class Individual<S, T> {
      */
     @Getter
     private long id;
+
     /**
      * The object representing the individuals fitness
      */
@@ -56,7 +61,7 @@ public abstract class Individual<S, T> {
     /**
      * Get the fitness value
      *
-     * @return
+     * @return the fitness, or null
      */
     public abstract T getFitness();
 
